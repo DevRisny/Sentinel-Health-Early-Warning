@@ -23,7 +23,7 @@ from sklearn.metrics import average_precision_score, brier_score_loss, roc_auc_s
 from . import config as C
 from .backtest import bootstrap_ci, score_alerts, summarise
 from .environment import load_environment
-from .explain import GROUP_ORDER, action_card, explain_row
+from .explain import GROUP_ORDER, PLAYBOOK, ROLE, action_card, explain_row
 from .features import (
     FEATURE_GROUP,
     SIGNAL_FAMILY,
@@ -142,8 +142,8 @@ def run(make_figures: bool = True) -> dict:
 
     results = {
         "generated": pd.Timestamp.now(tz=C.TIMEZONE).isoformat(timespec="seconds"),
-        "periods": {"train": [C.START_DATE, C.TRAIN_END], "valid": [C.TRAIN_END, C.VALID_END],
-                    "test": [C.VALID_END, C.END_DATE]},
+        "periods": {"development": [C.START_DATE, C.VALID_END],
+                    "test": ["2026-01-01", C.END_DATE]},
         "policy": {"threshold": model.threshold, "warning": model.warning, "danger": model.danger,
                    "budget_per_cluster_month": C.ALERT_BUDGET_PER_CLUSTER_MONTH, "cooldown_days": C.COOLDOWN_DAYS},
         "headline": {k: {**summarise(v), **bootstrap_ci(v)} for k, v in res.items()},
@@ -151,6 +151,8 @@ def run(make_figures: bool = True) -> dict:
             "roc_auc": float(roc_auc_score(y_te, p_te)),
             "average_precision": float(average_precision_score(y_te, p_te)),
             "brier": float(brier_score_loss(y_te, p_te)),
+            "ap_baseline_a": float(average_precision_score(y_te, np.nan_to_num(baseline_a_score(te), nan=0))),
+            "ap_baseline_b": float(average_precision_score(y_te, np.nan_to_num(baseline_b_score(te), nan=-99))),
             "base_rate": float(y_te.mean()),
             "reliability": reliability(y_te, p_te),
         },
@@ -304,16 +306,18 @@ def export_dashboard(te, p, sev, contrib, events, model, results, env, base_flag
             "a": int(base_flags["a"][k]), "b": int(base_flags["b"][k]), "deg": int(degraded[k]),
             "g": {g: round(float(c[g]), 3) for g in GROUP_ORDER if g in c.index},
         }
-        if si:
+        if pi >= 0.03:  # explanations for anything near the alert line (budget slider)
             rec["why"] = sentence
             rec["drv"] = drivers
-            rec["act"] = action_card(si, drivers)
+            rec["k"] = action_card(si or "Watch", drivers)["kind"]
         rows.append(rec)
 
     ev = events[(events["peak"] >= pd.Timestamp(dates[0])) & (events["peak"] <= pd.Timestamp(dates[-1]))]
     meta = {
         "region": C.REGION_NAME, "dates": dates, "clusters": clusters, "districts": districts,
         "policy": results["policy"], "groups": GROUP_ORDER,
+        "playbook": PLAYBOOK, "responsible": ROLE,
+        "assumptions": action_card("Watch", [])["assumptions"],
         "privacy": {"small_cell_min": C.SMALL_CELL_MIN, "pool_workforce_min": C.POOL_WORKFORCE_MIN},
         "events": [{"id": r["event_id"], "c": r["cluster"], "start": r["start"].strftime("%Y-%m-%d"),
                     "end": r["end"].strftime("%Y-%m-%d"), "peak": r["peak"].strftime("%Y-%m-%d")} for _, r in ev.iterrows()],

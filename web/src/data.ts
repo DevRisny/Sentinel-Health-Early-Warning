@@ -33,7 +33,7 @@ export async function loadDataset(): Promise<Dataset> {
 
 export const SEV_ORDER: Record<Severity, number> = { '': 0, Watch: 1, Warning: 2, Danger: 3 }
 export const SEV_COLOR: Record<Severity, string> = { '': '#12a383', Watch: '#d9a400', Warning: '#e8780c', Danger: '#d43d51' }
-export const SEV_SOFT: Record<Severity, string> = { '': '#e6f5f1', Watch: '#fff7d6', Warning: '#fff0e0', Danger: '#fdecef' }
+export const SEV_SOFT: Record<Severity, string> = { '': 'var(--color-brand-soft)', Watch: 'var(--color-watch-soft)', Warning: 'var(--color-warning-soft)', Danger: 'var(--color-danger-soft)' }
 export const SEV_LABEL: Record<Severity, string> = { '': 'Normal', Watch: 'Watch', Warning: 'Warning', Danger: 'Danger' }
 
 export const maxSev = (rows: DayRow[]): Severity =>

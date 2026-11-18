@@ -11,7 +11,7 @@ export interface DayRow {
   abs: number | null; absE: number; inc: number | null; shift: number
   comp: number | null; ev: number; a: number; b: number; deg: number
   g: Record<string, number>
-  why?: string; drv?: Driver[]; act?: ActionCard
+  why?: string; drv?: Driver[]; k?: 'heat' | 'dust' | 'signal'
 }
 
 export interface Cluster {
@@ -24,6 +24,9 @@ export interface Meta {
   region: string; dates: string[]; clusters: Cluster[]; districts: District[]
   policy: { threshold: number; warning: number; danger: number; budget_per_cluster_month: number; cooldown_days: number }
   groups: string[]
+  playbook: Record<string, Record<string, string[]>>
+  responsible: Record<string, string>
+  assumptions: string[]
   privacy: { small_cell_min: number; pool_workforce_min: number }
   events: { id: string; c: string; start: string; end: string; peak: string }[]
   sources: Record<string, string>
@@ -43,7 +46,7 @@ export interface Trust {
   stress_tests: (Summary & { scenario: string })[]
   by_site_size: { band: string; events: number; sensitivity: number; ppv: number | null }[]
   scenarios_test: { key: string; label: string; cluster: string; kind: string; start: string; days: number; expected: string; sentinel_first_alert: string | null; baseline_a_first_alert: string | null }[]
-  discrimination: { roc_auc: number; average_precision: number; brier: number; base_rate: number; reliability: { pred: number; obs: number; n: number }[] }
+  discrimination: { ap_baseline_a?: number; roc_auc: number; average_precision: number; brier: number; base_rate: number; reliability: { pred: number; obs: number; n: number }[] }
   global_importance: { group: string; mean_abs_shap: number; family: string }[]
   periods: Record<string, string[]>
 }
