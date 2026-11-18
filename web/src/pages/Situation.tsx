@@ -23,7 +23,12 @@ export function Situation() {
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
         <Stat icon={<AlertTriangle size={18} />} label={role === 'regulator' ? 'Districts on alert' : 'Active alerts'} tone={alerts.length ? 'danger' : 'brand'}
           value={role === 'regulator' ? new Set(alerts.map(a => ds.cluster[a.c].district)).size : alerts.length}
-          sub={`${alerts.filter(a => sevOf(a) === 'Danger').length} Danger · ${alerts.filter(a => sevOf(a) === 'Warning').length} Warning`} />
+          sub={(() => {
+            const sevs = role === 'regulator'
+              ? ds.meta.districts.map(d => alerts.filter(a => ds.cluster[a.c].district === d.code).reduce<Severity>((m, r) => (SEV_ORDER[sevOf(r)] > SEV_ORDER[m] ? sevOf(r) : m), ''))
+              : alerts.map(a => sevOf(a))
+            return `${sevs.filter(x => x === 'Danger').length} Danger · ${sevs.filter(x => x === 'Warning').length} Warning · ${sevs.filter(x => x === 'Watch').length} Watch`
+          })()} />
         <Stat icon={<Activity size={18} />} label="Workers covered by alerts" tone="warning" value={workersAtRisk.toLocaleString()} sub="in site clusters on Watch or above" />
         <Stat icon={<Thermometer size={18} />} label="Peak heat next 48 h" tone="warning" value={maxW.toFixed(1)} sub="WBGT proxy, worst district" />
         <Stat icon={<Wind size={18} />} label="Peak dust next 48 h" tone="sky" value={`${Math.round(maxP)}`} sub="PM10 µg/m³, worst district" />
