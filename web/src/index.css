@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --color-ink: #14213d;
+  --color-ink-2: #43536b;
+  --color-ink-3: #7a8ca3;
+  --color-line: #e3e9f1;
+  --color-paper: #f6f8fb;
+  --color-brand: #0e7c66;
+  --color-brand-2: #12a383;
+  --color-brand-soft: #e6f5f1;
+  --color-watch: #d9a400;
+  --color-watch-soft: #fff7d6;
+  --color-warning: #e8780c;
+  --color-warning-soft: #fff0e0;
+  --color-danger: #d43d51;
+  --color-danger-soft: #fdecef;
+  --color-sky: #3e7cb1;
+  --color-sky-soft: #e8f1fa;
+}
+
+html, body, #root { height: 100%; }
+body {
+  margin: 0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  box-shadow: 0 1px 2px rgba(20, 33, 61, 0.04), 0 8px 24px -12px rgba(20, 33, 61, 0.08);
+}
+.card-title { font-size: 13px; font-weight: 650; letter-spacing: 0.01em; color: var(--color-ink); }
+.eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-ink-3); }
+.tabular { font-variant-numeric: tabular-nums; }
+
+input[type="range"].scrub { -webkit-appearance: none; appearance: none; height: 6px; border-radius: 999px; background: var(--color-line); }
+input[type="range"].scrub::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: var(--color-brand); border: 3px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.25); cursor: pointer; }
+input[type="range"].scrub::-moz-range-thumb { width: 14px; height: 14px; border-radius: 50%; background: var(--color-brand); border: 3px solid #fff; }
+
+.pulse { animation: pulse 1.8s ease-out infinite; transform-origin: center; transform-box: fill-box; }
+@keyframes pulse { 0% { opacity: .55; transform: scale(1); } 100% { opacity: 0; transform: scale(2.4); } }
+
+.fade-in { animation: fade .25s ease-out; }
+@keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #d5dde8; border-radius: 999px; border: 2px solid #fff; }

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-18T19:39:43+04:00",
+  "generated": "2026-11-18T20:31:08+04:00",
   "periods": {
     "train": [
       "2024-01-01",
@@ -24,26 +24,26 @@
   "headline": {
     "sentinel": {
       "n_events": 44,
-      "sensitivity": 0.841,
+      "sensitivity": 0.773,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 58.378,
+      "mean_lead_hours": 57.176,
       "median_onset_lead_hours": 48.0,
-      "share_warned_before_onset": 0.795,
-      "n_alert_episodes": 91,
-      "ppv": 0.187,
-      "false_alarms_per_cluster_month": 0.59,
-      "alert_days_per_cluster_month": 6.126,
+      "share_warned_before_onset": 0.727,
+      "n_alert_episodes": 81,
+      "ppv": 0.259,
+      "false_alarms_per_cluster_month": 0.479,
+      "alert_days_per_cluster_month": 4.706,
       "sensitivity_ci": [
-        0.7272727272727273,
-        0.9318181818181818
+        0.6590909090909091,
+        0.8863636363636364
       ],
       "median_lead_hours_ci": [
         48.0,
-        60.0
+        72.0
       ],
       "ppv_ci": [
-        0.10989010989010989,
-        0.27472527472527475
+        0.1728395061728395,
+        0.35802469135802467
       ],
       "per_event": [
         {
@@ -60,7 +60,7 @@
           "start": "2026-08-11",
           "peak": "2026-08-12",
           "detected": true,
-          "lead_hours": 48.0
+          "lead_hours": 72.0
         },
         {
           "event_id": "AAN-C2#006",
@@ -76,7 +76,7 @@
           "start": "2026-07-15",
           "peak": "2026-07-16",
           "detected": true,
-          "lead_hours": 72.0
+          "lead_hours": 24.0
         },
         {
           "event_id": "AAN-C2#008",
@@ -100,7 +100,7 @@
           "start": "2026-07-28",
           "peak": "2026-07-28",
           "detected": true,
-          "lead_hours": 48.0
+          "lead_hours": 24.0
         },
         {
           "event_id": "AUH-C1#008",
@@ -123,8 +123,8 @@
           "cluster": "AUH-C1",
           "start": "2026-09-02",
           "peak": "2026-09-02",
-          "detected": true,
-          "lead_hours": 48.0
+          "detected": false,
+          "lead_hours": null
         },
         {
           "event_id": "AUH-C2#007",
@@ -268,7 +268,7 @@
           "start": "2026-08-18",
           "peak": "2026-08-18",
           "detected": true,
-          "lead_hours": 48.0
+          "lead_hours": 24.0
         },
         {
           "event_id": "MUS-C2#008",
@@ -276,15 +276,15 @@
           "start": "2026-08-31",
           "peak": "2026-09-02",
           "detected": true,
-          "lead_hours": 48.0
+          "lead_hours": 24.0
         },
         {
           "event_id": "MUS-C2#009",
           "cluster": "MUS-C2",
           "start": "2026-09-23",
           "peak": "2026-09-24",
-          "detected": true,
-          "lead_hours": 24.0
+          "detected": false,
+          "lead_hours": null
         },
         {
           "event_id": "MUS-C3#008",
@@ -387,8 +387,8 @@
           "cluster": "RUW-C2",
           "start": "2026-08-31",
           "peak": "2026-08-31",
-          "detected": true,
-          "lead_hours": 48.0
+          "detected": false,
+          "lead_hours": null
         },
         {
           "event_id": "RUW-C2#009",
@@ -1158,59 +1158,59 @@
     }
   },
   "discrimination": {
-    "roc_auc": 0.8864861334030084,
-    "average_precision": 0.24164259899275053,
-    "brier": 0.032486476863302874,
+    "roc_auc": 0.8933037213989772,
+    "average_precision": 0.2414412187818679,
+    "brier": 0.03236640807173763,
     "base_rate": 0.03825995807127883,
     "reliability": [
       {
-        "pred": 0.003623053596118019,
+        "pred": 0.0029803390223925664,
         "obs": 0.0,
         "n": 382
       },
       {
-        "pred": 0.0055569404503893315,
-        "obs": 0.0,
-        "n": 381
-      },
-      {
-        "pred": 0.007644013054822945,
-        "obs": 0.0,
-        "n": 382
-      },
-      {
-        "pred": 0.01072093716713987,
+        "pred": 0.0045543768286696006,
         "obs": 0.0,
         "n": 381
       },
       {
-        "pred": 0.016087558862536072,
-        "obs": 0.005235602094240838,
+        "pred": 0.006330983601946655,
+        "obs": 0.002617801047120419,
         "n": 382
       },
       {
-        "pred": 0.02499358032793468,
-        "obs": 0.013089005235602094,
+        "pred": 0.00865725515257809,
+        "obs": 0.0,
+        "n": 381
+      },
+      {
+        "pred": 0.011941189777572265,
+        "obs": 0.0,
         "n": 382
       },
       {
-        "pred": 0.03835202727001459,
+        "pred": 0.01762046428922147,
+        "obs": 0.007853403141361256,
+        "n": 382
+      },
+      {
+        "pred": 0.02828984643259108,
         "obs": 0.028871391076115485,
         "n": 381
       },
       {
-        "pred": 0.0623636196166259,
-        "obs": 0.026246719160104987,
+        "pred": 0.04682056621469062,
+        "obs": 0.03674540682414698,
         "n": 381
       },
       {
-        "pred": 0.10870949083692205,
-        "obs": 0.09947643979057591,
+        "pred": 0.08334021383571712,
+        "obs": 0.09162303664921466,
         "n": 382
       },
       {
-        "pred": 0.22141808974255803,
-        "obs": 0.2094240837696335,
+        "pred": 0.17014341415724632,
+        "obs": 0.21465968586387435,
         "n": 382
       }
     ]
@@ -1220,105 +1220,105 @@
       {
         "budget": 1,
         "n_events": 44,
-        "sensitivity": 0.364,
+        "sensitivity": 0.386,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 49.5,
+        "mean_lead_hours": 50.824,
         "median_onset_lead_hours": 48.0,
         "share_warned_before_onset": 0.341,
-        "n_alert_episodes": 43,
-        "ppv": 0.395,
-        "false_alarms_per_cluster_month": 0.207,
+        "n_alert_episodes": 44,
+        "ppv": 0.5,
+        "false_alarms_per_cluster_month": 0.175,
         "alert_days_per_cluster_month": 0.997
       },
       {
         "budget": 1.5,
         "n_events": 44,
-        "sensitivity": 0.409,
+        "sensitivity": 0.477,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 53.333,
+        "mean_lead_hours": 49.143,
         "median_onset_lead_hours": 48.0,
-        "share_warned_before_onset": 0.409,
-        "n_alert_episodes": 51,
-        "ppv": 0.392,
-        "false_alarms_per_cluster_month": 0.247,
+        "share_warned_before_onset": 0.386,
+        "n_alert_episodes": 54,
+        "ppv": 0.463,
+        "false_alarms_per_cluster_month": 0.231,
         "alert_days_per_cluster_month": 1.492
       },
       {
         "budget": 2,
         "n_events": 44,
-        "sensitivity": 0.523,
+        "sensitivity": 0.568,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 52.174,
+        "mean_lead_hours": 50.88,
         "median_onset_lead_hours": 48.0,
-        "share_warned_before_onset": 0.455,
-        "n_alert_episodes": 56,
-        "ppv": 0.393,
-        "false_alarms_per_cluster_month": 0.271,
+        "share_warned_before_onset": 0.5,
+        "n_alert_episodes": 63,
+        "ppv": 0.381,
+        "false_alarms_per_cluster_month": 0.311,
         "alert_days_per_cluster_month": 1.994
       },
       {
         "budget": 3,
         "n_events": 44,
-        "sensitivity": 0.659,
+        "sensitivity": 0.682,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 52.966,
+        "mean_lead_hours": 55.2,
         "median_onset_lead_hours": 48.0,
-        "share_warned_before_onset": 0.591,
+        "share_warned_before_onset": 0.636,
         "n_alert_episodes": 69,
-        "ppv": 0.348,
-        "false_alarms_per_cluster_month": 0.359,
+        "ppv": 0.304,
+        "false_alarms_per_cluster_month": 0.383,
         "alert_days_per_cluster_month": 2.991
       },
       {
         "budget": 4,
         "n_events": 44,
-        "sensitivity": 0.727,
+        "sensitivity": 0.75,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 57.75,
+        "mean_lead_hours": 56.727,
         "median_onset_lead_hours": 48.0,
-        "share_warned_before_onset": 0.682,
-        "n_alert_episodes": 64,
-        "ppv": 0.266,
-        "false_alarms_per_cluster_month": 0.375,
+        "share_warned_before_onset": 0.705,
+        "n_alert_episodes": 76,
+        "ppv": 0.25,
+        "false_alarms_per_cluster_month": 0.455,
         "alert_days_per_cluster_month": 3.988
       },
       {
         "budget": 5,
         "n_events": 44,
-        "sensitivity": 0.773,
+        "sensitivity": 0.795,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 57.882,
+        "mean_lead_hours": 56.229,
         "median_onset_lead_hours": 48.0,
         "share_warned_before_onset": 0.75,
-        "n_alert_episodes": 73,
-        "ppv": 0.219,
-        "false_alarms_per_cluster_month": 0.455,
+        "n_alert_episodes": 82,
+        "ppv": 0.244,
+        "false_alarms_per_cluster_month": 0.495,
         "alert_days_per_cluster_month": 4.986
       },
       {
         "budget": 6,
         "n_events": 44,
-        "sensitivity": 0.818,
+        "sensitivity": 0.841,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 59.333,
+        "mean_lead_hours": 57.081,
         "median_onset_lead_hours": 48.0,
         "share_warned_before_onset": 0.795,
-        "n_alert_episodes": 89,
-        "ppv": 0.191,
-        "false_alarms_per_cluster_month": 0.574,
+        "n_alert_episodes": 83,
+        "ppv": 0.205,
+        "false_alarms_per_cluster_month": 0.526,
         "alert_days_per_cluster_month": 5.983
       },
       {
         "budget": 8,
         "n_events": 44,
-        "sensitivity": 0.864,
+        "sensitivity": 0.909,
         "median_lead_hours": 48.0,
-        "mean_lead_hours": 58.737,
+        "mean_lead_hours": 58.8,
         "median_onset_lead_hours": 48.0,
-        "share_warned_before_onset": 0.818,
-        "n_alert_episodes": 92,
-        "ppv": 0.196,
-        "false_alarms_per_cluster_month": 0.59,
+        "share_warned_before_onset": 0.886,
+        "n_alert_episodes": 96,
+        "ppv": 0.177,
+        "false_alarms_per_cluster_month": 0.63,
         "alert_days_per_cluster_month": 7.977
       }
     ],
@@ -1538,44 +1538,44 @@
   "ablation": [
     {
       "variant": "Environmental only",
-      "average_precision": 0.20493325355261482,
+      "average_precision": 0.1850996569262056,
       "n_events": 44,
-      "sensitivity": 0.568,
+      "sensitivity": 0.682,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 50.88,
+      "mean_lead_hours": 47.2,
       "median_onset_lead_hours": 48.0,
-      "share_warned_before_onset": 0.545,
-      "n_alert_episodes": 58,
-      "ppv": 0.328,
-      "false_alarms_per_cluster_month": 0.311,
+      "share_warned_before_onset": 0.591,
+      "n_alert_episodes": 64,
+      "ppv": 0.359,
+      "false_alarms_per_cluster_month": 0.327,
       "alert_days_per_cluster_month": 2.991
     },
     {
       "variant": "+ clinic/service data",
-      "average_precision": 0.2334916883690701,
+      "average_precision": 0.2559578397730121,
       "n_events": 44,
-      "sensitivity": 0.705,
+      "sensitivity": 0.682,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 54.968,
+      "mean_lead_hours": 55.2,
       "median_onset_lead_hours": 48.0,
       "share_warned_before_onset": 0.636,
-      "n_alert_episodes": 64,
-      "ppv": 0.328,
-      "false_alarms_per_cluster_month": 0.343,
+      "n_alert_episodes": 62,
+      "ppv": 0.323,
+      "false_alarms_per_cluster_month": 0.335,
       "alert_days_per_cluster_month": 2.991
     },
     {
       "variant": "+ workplace data (full Sentinel)",
-      "average_precision": 0.24164259899275053,
+      "average_precision": 0.2414412187818679,
       "n_events": 44,
-      "sensitivity": 0.659,
+      "sensitivity": 0.682,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 52.966,
+      "mean_lead_hours": 55.2,
       "median_onset_lead_hours": 48.0,
-      "share_warned_before_onset": 0.591,
+      "share_warned_before_onset": 0.636,
       "n_alert_episodes": 69,
-      "ppv": 0.348,
-      "false_alarms_per_cluster_month": 0.359,
+      "ppv": 0.304,
+      "false_alarms_per_cluster_month": 0.383,
       "alert_days_per_cluster_month": 2.991
     }
   ],
@@ -1583,81 +1583,81 @@
     {
       "scenario": "Normal operation",
       "n_events": 44,
-      "sensitivity": 0.841,
+      "sensitivity": 0.773,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 58.378,
+      "mean_lead_hours": 57.176,
       "median_onset_lead_hours": 48.0,
-      "share_warned_before_onset": 0.795,
-      "n_alert_episodes": 91,
-      "ppv": 0.187,
-      "false_alarms_per_cluster_month": 0.59,
-      "alert_days_per_cluster_month": 6.126
+      "share_warned_before_onset": 0.727,
+      "n_alert_episodes": 81,
+      "ppv": 0.259,
+      "false_alarms_per_cluster_month": 0.479,
+      "alert_days_per_cluster_month": 4.706
     },
     {
       "scenario": "Clinic feed lost (all clinic signals missing)",
       "n_events": 44,
-      "sensitivity": 0.886,
+      "sensitivity": 0.795,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 61.538,
+      "mean_lead_hours": 61.029,
       "median_onset_lead_hours": 48.0,
-      "share_warned_before_onset": 0.886,
-      "n_alert_episodes": 43,
-      "ppv": 0.349,
-      "false_alarms_per_cluster_month": 0.223,
-      "alert_days_per_cluster_month": 7.482
+      "share_warned_before_onset": 0.795,
+      "n_alert_episodes": 56,
+      "ppv": 0.25,
+      "false_alarms_per_cluster_month": 0.335,
+      "alert_days_per_cluster_month": 6.35
     },
     {
       "scenario": "Reporting lag +2 days on every feed",
       "n_events": 44,
-      "sensitivity": 0.841,
+      "sensitivity": 0.818,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 59.027,
+      "mean_lead_hours": 53.333,
       "median_onset_lead_hours": 48.0,
-      "share_warned_before_onset": 0.841,
-      "n_alert_episodes": 90,
-      "ppv": 0.2,
-      "false_alarms_per_cluster_month": 0.574,
-      "alert_days_per_cluster_month": 6.23
+      "share_warned_before_onset": 0.773,
+      "n_alert_episodes": 79,
+      "ppv": 0.241,
+      "false_alarms_per_cluster_month": 0.479,
+      "alert_days_per_cluster_month": 4.834
     },
     {
       "scenario": "Weather/dust feed lost",
       "n_events": 44,
       "sensitivity": 0.75,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 56.727,
+      "mean_lead_hours": 53.818,
       "median_onset_lead_hours": 48.0,
       "share_warned_before_onset": 0.682,
-      "n_alert_episodes": 82,
-      "ppv": 0.207,
-      "false_alarms_per_cluster_month": 0.519,
-      "alert_days_per_cluster_month": 5.799
+      "n_alert_episodes": 65,
+      "ppv": 0.308,
+      "false_alarms_per_cluster_month": 0.359,
+      "alert_days_per_cluster_month": 4.722
     },
     {
       "scenario": "30% of reported days missing",
       "n_events": 44,
-      "sensitivity": 0.795,
+      "sensitivity": 0.75,
       "median_lead_hours": 48.0,
-      "mean_lead_hours": 57.6,
+      "mean_lead_hours": 53.818,
       "median_onset_lead_hours": 48.0,
-      "share_warned_before_onset": 0.75,
-      "n_alert_episodes": 83,
-      "ppv": 0.217,
-      "false_alarms_per_cluster_month": 0.519,
-      "alert_days_per_cluster_month": 5.408
+      "share_warned_before_onset": 0.705,
+      "n_alert_episodes": 71,
+      "ppv": 0.211,
+      "false_alarms_per_cluster_month": 0.447,
+      "alert_days_per_cluster_month": 4.435
     }
   ],
   "by_site_size": [
     {
       "band": "Large (>=3,000 workers)",
       "events": 25,
-      "sensitivity": 0.84,
-      "ppv": 0.16363636363636364
+      "sensitivity": 0.76,
+      "ppv": 0.23404255319148937
     },
     {
       "band": "Small (<3,000 workers)",
       "events": 19,
-      "sensitivity": 0.8421052631578947,
-      "ppv": 0.2222222222222222
+      "sensitivity": 0.7894736842105263,
+      "ppv": 0.29411764705882354
     }
   ],
   "scenarios_test": [
@@ -1669,7 +1669,7 @@
       "start": "2026-05-17",
       "days": 6,
       "expected": "alert",
-      "sentinel_first_alert": "2026-05-18",
+      "sentinel_first_alert": null,
       "baseline_a_first_alert": "2026-05-16"
     },
     {
@@ -1680,7 +1680,7 @@
       "start": "2026-07-08",
       "days": 3,
       "expected": "alert",
-      "sentinel_first_alert": "2026-07-09",
+      "sentinel_first_alert": "2026-07-06",
       "baseline_a_first_alert": "2026-07-07"
     },
     {
@@ -1702,7 +1702,7 @@
       "start": "2026-08-11",
       "days": 5,
       "expected": "alert",
-      "sentinel_first_alert": "2026-08-10",
+      "sentinel_first_alert": "2026-08-09",
       "baseline_a_first_alert": null
     },
     {
@@ -1713,7 +1713,7 @@
       "start": "2026-06-24",
       "days": 4,
       "expected": "alert",
-      "sentinel_first_alert": "2026-06-26",
+      "sentinel_first_alert": "2026-06-28",
       "baseline_a_first_alert": "2026-06-23"
     },
     {
@@ -1724,7 +1724,7 @@
       "start": "2026-07-27",
       "days": 4,
       "expected": "alert",
-      "sentinel_first_alert": "2026-07-25",
+      "sentinel_first_alert": "2026-07-27",
       "baseline_a_first_alert": "2026-07-29"
     },
     {
@@ -1757,7 +1757,7 @@
       "start": "2026-05-31",
       "days": 5,
       "expected": "alert",
-      "sentinel_first_alert": "2026-05-29",
+      "sentinel_first_alert": "2026-05-30",
       "baseline_a_first_alert": null
     },
     {
@@ -1779,69 +1779,69 @@
       "start": "2026-09-22",
       "days": 4,
       "expected": "alert",
-      "sentinel_first_alert": "2026-09-23",
+      "sentinel_first_alert": null,
       "baseline_a_first_alert": null
     }
   ],
   "global_importance": [
     {
-      "group": "Season",
-      "mean_abs_shap": 1.0558559747217773,
-      "family": "environmental"
-    },
-    {
       "group": "Heat forecast",
-      "mean_abs_shap": 0.7410408705180976,
+      "mean_abs_shap": 0.7349121277008849,
       "family": "environmental"
     },
     {
       "group": "Heat so far",
-      "mean_abs_shap": 0.6799118925208378,
+      "mean_abs_shap": 0.6504212524627396,
       "family": "environmental"
     },
     {
-      "group": "Acclimatisation",
-      "mean_abs_shap": 0.4772218893970797,
+      "group": "Season",
+      "mean_abs_shap": 0.5260804732415603,
       "family": "environmental"
-    },
-    {
-      "group": "Site profile",
-      "mean_abs_shap": 0.4505681947664383,
-      "family": "context"
-    },
-    {
-      "group": "Heat-illness visits",
-      "mean_abs_shap": 0.38637411613107087,
-      "family": "service"
-    },
-    {
-      "group": "Sickness absence",
-      "mean_abs_shap": 0.3595140301007702,
-      "family": "workplace"
     },
     {
       "group": "Dust",
-      "mean_abs_shap": 0.34833186777744657,
+      "mean_abs_shap": 0.4136543311207393,
       "family": "environmental"
     },
     {
-      "group": "Respiratory visits",
-      "mean_abs_shap": 0.24885015873471714,
+      "group": "Sickness absence",
+      "mean_abs_shap": 0.38768788226405265,
+      "family": "workplace"
+    },
+    {
+      "group": "Acclimatisation",
+      "mean_abs_shap": 0.3801122314857929,
+      "family": "environmental"
+    },
+    {
+      "group": "Heat-illness visits",
+      "mean_abs_shap": 0.36839189266602074,
       "family": "service"
     },
     {
+      "group": "Respiratory visits",
+      "mean_abs_shap": 0.33583104429046606,
+      "family": "service"
+    },
+    {
+      "group": "Site profile",
+      "mean_abs_shap": 0.3203492749008295,
+      "family": "context"
+    },
+    {
       "group": "Incident reports",
-      "mean_abs_shap": 0.22137532627584147,
+      "mean_abs_shap": 0.31654409806489975,
       "family": "workplace"
     },
     {
       "group": "All-cause visits",
-      "mean_abs_shap": 0.20009596613411834,
+      "mean_abs_shap": 0.19973364526126616,
       "family": "service"
     },
     {
       "group": "Data completeness",
-      "mean_abs_shap": 0.02797547215309568,
+      "mean_abs_shap": 0.03380605408554313,
       "family": "context"
     }
   ]

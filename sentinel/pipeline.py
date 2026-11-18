@@ -234,10 +234,11 @@ def run(make_figures: bool = True) -> dict:
     results["scenarios_test"] = sc_rows
 
     # ---- explanations for every test cluster-day ----
-    explainer = shap.TreeExplainer(model.model)
-    sv = explainer.shap_values(te[model.features])
-    sv = sv[1] if isinstance(sv, list) else sv
-    contrib = group_contributions(np.asarray(sv), model.features)
+    svs = []
+    for mdl in model.model:
+        sv = shap.TreeExplainer(mdl).shap_values(te[model.features])
+        svs.append(np.asarray(sv[1] if isinstance(sv, list) else sv))
+    contrib = group_contributions(np.mean(svs, axis=0), model.features)
     gimp = contrib.abs().mean().sort_values(ascending=False)
     results["global_importance"] = [{"group": g, "mean_abs_shap": float(v), "family": SIGNAL_FAMILY[g]} for g, v in gimp.items()]
 

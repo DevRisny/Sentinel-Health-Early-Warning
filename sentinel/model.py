@@ -60,7 +60,7 @@ def cluster_months(df: pd.DataFrame) -> float:
 
 @dataclass
 class SentinelModel:
-    model: lgb.LGBMClassifier
+    model: list  # one LightGBM model per development season (scores are averaged)
     calibrator: LogisticRegression
     threshold: float
     warning: float
@@ -69,7 +69,7 @@ class SentinelModel:
     fallback: "SentinelModel | None" = None
 
     def raw(self, X: pd.DataFrame) -> np.ndarray:
-        return self.model.predict_proba(X[self.features])[:, 1]
+        return np.mean([m.predict_proba(X[self.features])[:, 1] for m in self.model], axis=0)
 
     def degraded(self, X: pd.DataFrame) -> np.ndarray:
         """True where the weather/dust feed is missing, so the fallback model is used."""
@@ -117,22 +117,26 @@ def _fit_lgb(X: pd.DataFrame, y: pd.Series, feats: list[str]) -> lgb.LGBMClassif
 def train_sentinel(df: pd.DataFrame, y: pd.Series, features: list[str] | None = None) -> SentinelModel:
     """Season-wise cross-fitting on 2024-2025, final fit on both; 2026 never touched.
 
-    1. Fit on one season, predict the other (out-of-fold scores for every 2024-25 day).
+    1. Fit one model per season, each scores the other season (out-of-fold scores
+       for every 2024-25 day).
     2. Platt-calibrate on those out-of-fold scores.
     3. Pick the alert threshold that meets the alert budget on out-of-fold 2025.
-    4. Refit on both seasons for the deployed model.
+    4. Deploy the average of the two season models, so the deployed scores behave
+       like the out-of-fold scores the calibration and threshold were set on.
     """
     feats = features or feature_columns()
     dev = (df["date"] <= VALID_END) & y.notna()
     year = df["date"].dt.year
     oof = pd.Series(np.nan, index=df.index)
+    models = []
     for yr in (2024, 2025):
-        fit_rows, pred_rows = dev & (year != yr), dev & (year == yr)
+        fit_rows, pred_rows = dev & (year == yr), dev & (year != yr)
         m = _fit_lgb(df[fit_rows], y[fit_rows], feats)
         oof[pred_rows] = m.predict_proba(df.loc[pred_rows, feats])[:, 1]
+        models.append(m)
     cal = LogisticRegression(C=1.0)
     cal.fit(_logit(oof[dev].to_numpy()), y[dev])
-    clf = _fit_lgb(df[dev], y[dev], feats)
+    clf = models
     ref = dev & (year == 2025)
     p_ref = cal.predict_proba(_logit(oof[ref].to_numpy()))[:, 1]
     thr = threshold_for_budget(p_ref, cluster_months(df[ref]))
