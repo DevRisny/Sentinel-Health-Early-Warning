@@ -6,7 +6,7 @@
 
 **Future Health Digital Innovation Challenge 2026** · Population Health · *Population and Workforce Health Early Warning*
 
-[**Live prototype**](https://devrisny.github.io/Sentinel-Health-Early-Warning/) · [Technical documentation](docs/TECHNICAL_DOCUMENTATION.md) · [Model card](docs/MODEL_CARD.md) · [Data sheet](docs/DATA_SHEET.md)
+[**Live prototype**](https://devrisny.github.io/Sentinel-Health-Early-Warning/) · [**Demo video (3 min)**](docs/Sentinel_Demo_Video.mp4) · [Technical documentation](docs/TECHNICAL_DOCUMENTATION.md) ([PDF](docs/Sentinel_Technical_Documentation.pdf)) · [Model card](docs/MODEL_CARD.md) · [Data sheet](docs/DATA_SHEET.md)
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
 ![LightGBM](https://img.shields.io/badge/LightGBM-monotone%20constrained-0E7C66)

@@ -147,14 +147,14 @@ function Timeline({ code }: { code: string }) {
       { type: 'value', name: 'risk %', max: (v: { max: number }) => Math.max(30, Math.ceil(v.max / 10) * 10), nameTextStyle: { color: K.sub, fontSize: 10 }, splitLine: { show: false }, axisLabel: { color: K.sub, fontSize: 10 } },
     ],
     series: [
-      { name: 'Expected (seasonal normal)', type: 'line', data: expv, symbol: 'none', lineStyle: { color: '#a7b4c6', type: 'dashed', width: 1.5 }, areaStyle: { color: 'rgba(167,180,198,0.12)' } },
+      { name: 'Expected (seasonal normal)', type: 'line', data: expv, symbol: 'none', color: '#a7b4c6', lineStyle: { color: '#a7b4c6', type: 'dashed', width: 1.5 }, areaStyle: { color: 'rgba(167,180,198,0.12)' } },
       { name: 'Heat + respiratory visits (reported)', type: 'bar', data: burden, barWidth: '55%', color: '#12a383',
         itemStyle: { color: (p: { dataIndex: number }) => (all[p.dataIndex].ev && compare ? '#d43d51' : '#12a383'), borderRadius: [3, 3, 0, 0] } },
-      { name: '48-h risk (Sentinel)', type: 'line', yAxisIndex: 1, data: all.map(r => +(r.p * 100).toFixed(1)), smooth: true, symbol: 'circle', symbolSize: (_: number, p: { dataIndex: number }) => (sevOf(all[p.dataIndex]) ? 7 : 3),
+      { name: '48-h risk (Sentinel)', type: 'line', yAxisIndex: 1, color: K.ink, data: all.map(r => +(r.p * 100).toFixed(1)), smooth: true, symbol: 'circle', symbolSize: (_: number, p: { dataIndex: number }) => (sevOf(all[p.dataIndex]) ? 7 : 3),
         lineStyle: { color: K.ink, width: 2 }, itemStyle: { color: (p: { dataIndex: number }) => SEV_COLOR[sevOf(all[p.dataIndex])] },
         markLine: { silent: true, symbol: 'none', label: { formatter: 'alert line', color: '#d9a400', fontSize: 10 }, lineStyle: { color: '#d9a400', type: 'dotted' }, data: [{ yAxis: +(thresholds.watch * 100).toFixed(1) }] },
         markArea: compare && later.length ? { silent: true, itemStyle: { color: 'rgba(62,124,177,0.06)' }, label: { show: true, position: 'insideTop', color: '#3e7cb1', fontSize: 10, formatter: 'hindsight: what happened next' }, data: [[{ xAxis: x[rows.length] }, { xAxis: x[x.length - 1] }]] } : undefined },
-      ...(compare ? [{ name: "Today's fixed heat rule alert", type: 'scatter', yAxisIndex: 1, symbol: 'triangle', symbolSize: 10, itemStyle: { color: '#e08a1e' },
+      ...(compare ? [{ name: "Today's fixed heat rule alert", type: 'scatter', color: '#e08a1e', yAxisIndex: 1, symbol: 'triangle', symbolSize: 10, itemStyle: { color: '#e08a1e' },
         data: all.map(r => (r.a ? 2 : null)) }] : []),
     ],
   }
